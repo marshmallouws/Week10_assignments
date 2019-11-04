@@ -1,27 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
 import './App.css';
 import Users from './Users';
-
-const userPath = (index) => {
-
-}
+import Details from './Details';
 
 function App() {
+  const [user, setUser] = useState({});
+  const [index, setIndex] = useState();
+  const [picture, setPicture] = useState([]);
+  const getUserPath = (index, user, picture) => {
+    setIndex(index);
+    setUser(user);
+    setPicture(picture);
+  }
+  
   return (
-    <div className="App">
       <Router>
         <Switch>
           <Route exact path="/">
-            <Welcome />
+            <Welcome/>
           </Route>
           <Route path="/users">
-            <Users getUserPath={userPath}/>
+            <Users getUserPath={getUserPath}/>
+          </Route>
+          <Route path="/details">
+            <Details index={index} user={user} picture={picture}/>
           </Route>
         </Switch>
       </Router>
-
-    </div>
   );
 }
 

@@ -1,19 +1,16 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams
-  } from "react-router-dom";
 
 function Details(props) {
-    const {user} = props;
-    let { index } = useParams();
+
+    /*const { user, index } = props;
+    const pictures = user.picture;
+    console.log(pictures.large);
+    console.log("somethign") */
 
     return (
-        <h1>Seeing details for a specific user: {index}</h1>
+        <div>
+
+        </div> 
     );
 
 }
