@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import data from "./data/data.json";
-import uuid from "uuid/v1";
-import Details from "./Details";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link,
-} from "react-router-dom";
+    useParams,
+    useRouteMatch
+  } from "react-router-dom";
 
 function Users(props) {
-    const { getUserPath } = props;
+    const { getUserPath, users } = props;
     const [picture, setPicture] = useState({});
-    const users = data;
 
     return (
         <div>
@@ -24,27 +22,17 @@ function Users(props) {
                         <th>Details</th>
                     </tr>
                 </thead>
-                {/*Details should be a link*/}
                 <tbody>
-                    {users.users.map((u, i) => (
-                        
-                        <tr key={uuid()}>
+                    {users.map((u, i) => ( 
+                        <tr key={i}>
                             <td>{u.first + " " + u.last}</td>
-                            <td> <Link to={`/details/${i}`} onClick={(e) => {
-                                                        setPicture({...u.picture});
-                                                        getUserPath(i, u, picture)}}> Details</Link></td>
+                            <td> <Link to={`details/${i}`} onClick={(e) => {
+                                
+                            }}> Details</Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            
-            <Router>
-                <Switch>
-                    <Route path='/details/:index'>
-                        <Details/>
-                    </Route>
-                </Switch>
-            </Router>
         </div>
     );
 }

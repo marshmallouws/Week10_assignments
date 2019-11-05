@@ -1,15 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
 import './App.css';
 import Users from './Users';
 import Details from './Details';
+import data from "./data/data.json";
 
 function App() {
+  const [users, setUsers] = useState();
   const [user, setUser] = useState({});
   const [index, setIndex] = useState();
   const [picture, setPicture] = useState([]);
+
+  useEffect(() => {
+    setUsers(data);
+    console.log(users);
+  });
+  
+  //setUsers(...data.users);
   const getUserPath = (index, user, picture) => {
-    setIndex(index);
     setUser(user);
     setPicture(picture);
   }
@@ -21,9 +29,9 @@ function App() {
             <Welcome/>
           </Route>
           <Route path="/users">
-            <Users getUserPath={getUserPath}/>
+            <Users getUserPath={getUserPath} users={users}/>
           </Route>
-          <Route path="/details">
+          <Route path="/details/:index">
             <Details index={index} user={user} picture={picture}/>
           </Route>
         </Switch>
