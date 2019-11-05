@@ -6,20 +6,18 @@ import Details from './Details';
 import data from "./data/data.json";
 
 function App() {
-  const [users, setUsers] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [users, setUsers] = useState([{}]);
   const [user, setUser] = useState({});
-  const [index, setIndex] = useState();
-  const [picture, setPicture] = useState([]);
-
-  useEffect(() => {
-    setUsers(data);
-    console.log(users);
-  });
   
-  //setUsers(...data.users);
-  const getUserPath = (index, user, picture) => {
-    setUser(user);
-    setPicture(picture);
+  useEffect(() => {
+    setUsers(data.users);
+    setIsLoaded(true);
+    console.log(users)
+  },[isLoaded]);
+
+  const getData = (user) => {
+    setUser({...user});
   }
   
   return (
@@ -29,10 +27,10 @@ function App() {
             <Welcome/>
           </Route>
           <Route path="/users">
-            <Users getUserPath={getUserPath} users={users}/>
+            <Users isLoaded={isLoaded} users={users} getData={getData}/>
           </Route>
           <Route path="/details/:index">
-            <Details index={index} user={user} picture={picture}/>
+            <Details user={user}/>
           </Route>
         </Switch>
       </Router>
