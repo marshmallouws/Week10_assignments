@@ -1,0 +1,25 @@
+{
+  "api": [
+    {
+      "id": "dcd7c7a0-fda9-11e9-a112-b33090d64ae3",
+      "age": "123",
+      "name": "Bitten",
+      "email": "marshmallouws@gmail.com",
+      "gender": "female"
+    },
+    {
+      "id": "94407c00-fdb6-11e9-a2c9-832f43b1b0e8",
+      "age": "23",
+      "name": "Lise Lotte Hansen",
+      "email": "lise@mail.dk",
+      "gender": "female"
+    },
+    {
+      "id": "24beb030-fdb7-11e9-97bf-4baab4519684",
+      "age": "23",
+      "name": "Jens Hansen",
+      "email": "jens@somewhere.com",
+      "gender": "male"
+    }
+  ]
+}
